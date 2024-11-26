@@ -1,11 +1,21 @@
+-- Pull in the wezterm API
 local wezterm = require 'wezterm'
-local c = {}
+
+-- This will hold the configuration
+local config = {}
 if wezterm.config_builder then
-  c = wezterm.config_builder()
+  config = wezterm.config_builder()
 end
 
-c.initial_cols = 120
-c.initial_rows = 40
-c.window_background_opacity = 0.8
+-- My Configuration Choices
+config.window_background_opacity = 0.8
+config.initial_cols = 120
+config.initial_rows = 40
 
-return c
+-- On Windows
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.default_prog = { 'pwsh.exe' }
+end
+
+return config
+
