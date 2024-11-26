@@ -15,6 +15,7 @@ config.initial_rows = 40
 -- On Windows
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_prog = { 'pwsh.exe' }
+  config.font = wezterm.font 'Cascadia Mono'
 end
 
 return config
